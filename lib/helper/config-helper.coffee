@@ -2,6 +2,7 @@ fs = require 'fs-plus'
 cson = require 'season'
 path = require 'path'
 _ = require 'underscore'
+minimatch = require 'minimatch'
 
 module.exports = ConfigHelper =
     configFileName: '.sync-config.cson'
@@ -25,7 +26,7 @@ module.exports = ConfigHelper =
 
     isExcluded: (str, exclude) ->
         for pattern in exclude
-            return true if (str.indexOf pattern) isnt -1
+            return minimatch(str, pattern)
         return false
 
     getRelativePath: (f) ->
