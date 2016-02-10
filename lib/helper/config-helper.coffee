@@ -26,7 +26,7 @@ module.exports = ConfigHelper =
 
     isExcluded: (str, exclude) ->
         for pattern in exclude
-            return minimatch(str, pattern)
+            return minimatch str pattern
         return false
 
     getRelativePath: (f) ->
